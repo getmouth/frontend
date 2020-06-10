@@ -8,7 +8,6 @@ import { validateEmail, validatePassword } from '../../../utils';
 const LoginForm = () => {
 
     const [email, setEmail] = useState('');
-    const [submitting, setSubmitting] = useState(false)
     const [password, setPassword] = useState('');
     const [error, setError] = useState({
         email: '',
@@ -21,7 +20,7 @@ const LoginForm = () => {
         e.preventDefault();
         const passError = handlePasswordValidation();
         const emailError = handleEmailValidation();
-        console.log(error)
+
         if (passError && emailError) {
             return
         } else {
@@ -43,7 +42,7 @@ const LoginForm = () => {
         return passwordError;
     }
 
-    console.log(Object.values(error).map(e => e))
+
     const onEmailChange = (e) => {
         setEmail(e.target.value);
     };
@@ -53,13 +52,13 @@ const LoginForm = () => {
     };
 
     const errorsArr = Object.values(error);
-     console.log(errorsArr)
+   
     return(
         <div className="login-form">
           {
-              (error.email || error.password) && (
+            (error.email || error.password) && (
                 <Notification messages={errorsArr} type="error" />
-              )
+            )
           }
             <form className="inner-form" onSubmit={onSubmit}>
                 <h2>Login</h2>
