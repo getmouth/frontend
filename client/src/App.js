@@ -11,7 +11,8 @@ const App = () => {
     const state = useSelector(state => state)
     useEffect(() => {
         dispatch(getRecipes());
-    }, [])
+    }, []);
+    
     console.log(state.user)
     return (
         <div>
