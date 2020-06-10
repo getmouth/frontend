@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Recipe from './Recipe';
-import { getRecipes } from '../../actions/recipes'
+import { getRecipes } from '../../actions/recipes';
+import './RecipesList.scss';
 
 const RecipesList = () => {
     const dispatch = useDispatch();
