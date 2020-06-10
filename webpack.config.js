@@ -3,7 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './client/src/index.js',
+    entry: ['whatwg-fetch', './client/src/index.js'],
     output: {
         path: path.resolve(__dirname, './client/public'),
         filename: 'bundle.js'
