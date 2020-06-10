@@ -1,12 +1,16 @@
 const express = require('express');
-const recipeRoutes = require('./routes/recipesRoutes');
+const recipeRoute = require('./routes/recipesRoute');
+const loginRoute = require('./routes/loginRoute');
+const middleware = require('./utils/middleware');
 const cors = require('cors');
 
 
 const app = express();
 app.use(express.json());
 app.use(cors('*'));
-app.use('/api/recipes', recipeRoutes);
+app.use(middleware.requestLogger)
+app.use('/api/recipes', recipeRoute);
+app.use('/api/login', loginRoute);
 
 
 const PORT = process.env.PORT || 3001;
