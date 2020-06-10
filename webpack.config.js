@@ -16,7 +16,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test:/\.js$/,
+                test:/\.(js|jsx)$/,
                 loader: ['babel-loader'],
                 exclude: /node_modules/
             },
@@ -26,6 +26,9 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+      },
     plugins: [
         new HtmlWebpackPlugin({
             template: './client/src/index.html',

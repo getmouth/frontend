@@ -7,15 +7,13 @@ const api = supertest(app);
 describe('Recipes', () => {
 
     test('returns a list of recipes', async () => {
-        try {
-            const response = await api.get('/api/recipes')
-                .expect(200)
-                .expect('Content-Type', /application\/json/);
+        const response = await api.get('/api/recipes')
+            .expect(200)
+            .expect('Content-Type', /application\/json/);
 
-            expect(response.body).toHaveLength(data.length)
-        } catch (error) {
-            console.log(error)
-        }
-        
+        expect(response.body).toHaveLength(data.length);
     });
+    afterAll(() => {
+        app.close()
+    })
 })

@@ -4,7 +4,7 @@
   "description": "HelloFreshGO - Front-end Exercise =============================================",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest --verbose --runInBand",
+    "test": "NODE_ENV=test jest --verbose --runInBand --forceExit",
     "dev": "webpack-dev-server --color -wd",
     "start": "NODE_ENV=production node ./server.js",
     "server": "NODE_ENV=development nodemon server.js"

@@ -1,9 +1,13 @@
 import React from 'react';
+import LoginForm from './component/Forms/LoginForm/LoginForm';
 import './App.scss';
 
 const App = () => {
+
     return (
-        <h1>Hello Starter</h1>
+        <div>
+            <LoginForm />
+        </div>
     );
 }
 
