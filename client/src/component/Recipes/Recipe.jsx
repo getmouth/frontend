@@ -10,11 +10,17 @@ const Recipe = ({ recipe }) => {
             {/* <div style={{width: '100%'}}>
                 <img  src={tempImage} alt={recipe.headline} />
             </div> */}
-            <div>{recipe.name}</div>
-            <div>{recipe.rating}</div>
-            <div>{recipe.headline}</div>
-            <div>{recipe.calories}</div>
-            <div>{recipe.time}</div>
+            <div className="recipe-info">
+                <div className="recipe-heading">
+                    <h2>{recipe.name}</h2>
+                    <div>{recipe.headline}</div>
+                </div>
+                <div className="recipe-more-info">
+                    <div>{recipe.rating}</div>
+                    <div>{recipe.calories}</div>
+                    <div>{recipe.time}</div>
+                </div>
+            </div>
         </div>
     );
 }
