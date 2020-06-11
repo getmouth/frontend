@@ -10,7 +10,7 @@ const Recipe = require('./models/Recipe');
 const data = require('./recipes.json');
 const cors = require('cors');
 require('dotenv').config();
-
+const User = require('./models/User')
 
 mongoose.connect(config.DB_URL, {
     useFindAndModify: false,
@@ -19,7 +19,7 @@ mongoose.connect(config.DB_URL, {
     useCreateIndex: true
 })
 .then(async () => {
-
+    //User.deleteMany({})
     logger.info('MongoDB connected successfully');
     const recipes = await Recipe.find({});
     if (recipes.length === 0) {
@@ -33,7 +33,7 @@ mongoose.connect(config.DB_URL, {
 
 const app = express();
 app.use(express.json());
-app.use(cors('*'));
+app.use(cors());
 app.use(middleware.requestLogger)
 app.use('/api/recipes', recipeRoute);
 app.use('/api/login', loginRoute);

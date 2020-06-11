@@ -23,11 +23,12 @@ export const loginUser = async ({ email, password }) => {
 }
 
 
-export const favoriteRecipeById = async ({ id, userId }) => {
+export const favoriteRecipeById = async ({ id, userId, token }) => {
     const response = await fetch(`${baseUrl}/api/users/${userId}/favourites/${id}`, {
         method: 'PATCH',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
         }
     });
 

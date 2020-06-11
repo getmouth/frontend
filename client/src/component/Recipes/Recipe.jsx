@@ -16,7 +16,12 @@ const Recipe = ({ recipe, favourited, onFavourite, onRate }) => {
     return (
     <div
         className="recipe"
-        style={{backgroundImage: `url(${tempUrl}${recipe.id}.jpg)`}}
+        style={{
+            backgroundImage: `
+            radial-gradient(circle at 10% 100%, rgb(0, 0, 0), rgb(0, 0, 0), rgba(0, 0, 0, 0.1) 65%),
+            url(${tempUrl}${recipe.id}.jpg)
+            `
+        }}
     > 
            
             {

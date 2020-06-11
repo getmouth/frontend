@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './Login.scss';
 import { login } from '../../../actions/user';
 import Notification from '../../Notification/Notification';
 import { validateEmail, validatePassword } from '../../../utils';
 
 const LoginForm = () => {
-
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState({
@@ -14,8 +15,10 @@ const LoginForm = () => {
         password: ''
     });
 
+    
+    
     const dispatch = useDispatch();
-
+    const user = useSelector(state => state.user);
     const onSubmit = (e) => {
         e.preventDefault();
         const passError = handlePasswordValidation();
@@ -52,6 +55,11 @@ const LoginForm = () => {
     };
 
     const errorsArr = Object.values(error);
+    console.log(user)
+
+    if(user) {
+       return <Redirect to="/" />
+    }
    
     return(
         <div className="login-form">

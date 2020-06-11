@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
                 if(error || !user) {
                     return res.status(400).json({ error: 'Something is not right '});
                 }
-                //console.log(user)
+
                 const userToken = await helper.generateJWTToken(user.toJSON());
                 const parsedUser = user.toJSON();
 

@@ -11,11 +11,11 @@ const generateJWTToken = async (user) => { console.log(user)
 }
 
 const hashPassword = (password) => {
-    return bcrypt.hash(password, 10);
+    return bcrypt.hashSync(password, 10);
 }
 
-const validatePassword = (reqPassword, userPassword) => { console.log(reqPassword, userPassword)
-    return bcrypt.compare(reqPassword, userPassword);
+const validatePassword = (reqPassword, userPassword) => {
+    return bcrypt.compareSync(reqPassword, userPassword);
 }
 
 const correctEmail = (value) => (

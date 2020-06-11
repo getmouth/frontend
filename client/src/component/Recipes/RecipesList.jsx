@@ -15,10 +15,13 @@ const RecipesList = () => {
     }, []);
 
     const onFavourited = (id) => {
-    
+  
         if (user) {
-            const userId = user.id
-            dispatch(favoriteRecipe({ id, userId }));
+            const userId = user.id;
+            const token = user.token;
+
+            dispatch(favoriteRecipe({ id, userId, token }));
+
         } else {
             alert('Login to perform this action');
         }
@@ -26,10 +29,19 @@ const RecipesList = () => {
 
     const onRated = ({ id, rating }) => {
 
-        dispatch(rateRecipe({ id, rating }));
+        if (user) {
+
+            const token = user.token;
+
+            dispatch(rateRecipe({ id, rating, token }));
+
+        } else {
+            alert('Login to perform this action');
+        }
+       
     }
 
-    const recipesList = apiRecipes.recipes && apiRecipes.recipes;
+    const recipesList = apiRecipes && apiRecipes.recipes;
     const favourites = user 
         ? user.favourites
         : [];
@@ -50,7 +62,7 @@ const RecipesList = () => {
                                     recipe={recipe}
                                     key={recipe.id}
                                     onFavourite={onFavourited}
-                                    favourited={favourites.includes(recipe.id)}
+                                    favourited={favourites && favourites.includes(recipe.id)}
                                     onRate={onRated}
                                 />
                             ))

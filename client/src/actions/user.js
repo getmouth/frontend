@@ -3,10 +3,10 @@ import actions from './actionsTypes';
 
 
 export const login =({ email, password }) => {
-    return async dispatch => { console.log(email, password)
+    return async dispatch => {
         try {
             const user = await loginUser({ email, password});
-
+            console.log(user)
             localStorage.setItem('user', JSON.stringify(user));
             dispatch({
                 type: actions.LOGIN,
@@ -20,11 +20,11 @@ export const login =({ email, password }) => {
 }
 
 
-export const favoriteRecipe = ({id, userId}) => {
+export const favoriteRecipe = ({ id, userId, token }) => {
     return async dispatch => {
         try {
 
-            const favourites = await favoriteRecipeById({ id, userId });
+            const favourites = await favoriteRecipeById({ id, userId, token });
             const user = localStorage.getItem('user');
             const parsedUser = user && JSON.parse(user);
 

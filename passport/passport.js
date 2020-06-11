@@ -38,9 +38,10 @@ passport
     .use(new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
         secretOrKey: process.env.SECRET
-    }, async (jwtPayload, done) => {
+    }, async (jwtPayload, done) => { 
         try {
             const user = await User.find(jwtPayload._id);
+
             return done(null, user)
         } catch(error) {
             done(error);

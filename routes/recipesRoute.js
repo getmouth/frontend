@@ -15,7 +15,7 @@ router.get('/', async (_req, res) => {
     }
 });
 
-router.patch('/', async (req, res) => {
+router.patch('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const { id, rating } = req.body;
 
     try {
@@ -25,16 +25,6 @@ router.patch('/', async (req, res) => {
     } catch (error) {
         return res.status(400).json({ error: error.message });
     }
-
-    // const recipe = data.find(recipe => recipe.id === id);
-
-    // if(!recipe) {
-    //     return res.status(400).json({ error: 'requested action failed recipe not found' });
-    // }
-    // console.log(recipe, id)
-    // const updatedRecipe = {...recipe, rating: rating};
-
-    // res.status(200).json(updatedRecipe);
 });
 
 module.exports = router;

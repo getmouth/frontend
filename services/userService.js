@@ -4,7 +4,6 @@ const User = require('../models/User');
 
 
 const createUser = async ({ email, password }) => {
-    await User.deleteMany({});
     
     const hashPassword = await helper.hashPassword(password);
 

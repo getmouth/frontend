@@ -1,10 +1,17 @@
 const express = require('express');
 const User = require('../models/User');
 const Recipe = require('../models/Recipe');
+const passport = require('passport');
+require('../passport/passport');
+
 const router = express();
 
-//TODO: Add test later
-router.patch('/:id/favourites/:favId', async (req, res) => {
+
+router.patch(
+    '/:id/favourites/:favId',
+    passport.authenticate('jwt', { session: false }), 
+    async (req, res) => {
+    
     const user = await User.findById(req.params.id);
      const recipe = await Recipe.findOne({ id: req.params.favId });
 

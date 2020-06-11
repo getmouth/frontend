@@ -15,11 +15,12 @@ export const getAllRecipes = async () => {
     return data;
 };
 
-export const rateRecipeById = async ({ id, rating }) => {
+export const rateRecipeById = async ({ id, rating, token }) => {
     const response = await fetch(recipeUrl, {
         method: 'PATCH',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({ id, rating })
     });

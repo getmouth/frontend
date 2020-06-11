@@ -6,10 +6,8 @@ const initialuser = JSON.parse(localUser);
 const userReducer = (state = initialuser, action) => {
     switch(action.type) {
         case actions.LOGIN:
-            return {
-                ...state,
-                user: action.payload
-            }
+            return action.payload
+        
 
         
         case actions.FAVORITE_RECIPE:

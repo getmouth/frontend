@@ -6,6 +6,7 @@ import './App.scss';
 import { getRecipes } from './actions/recipes';
 import Header from './component/UI/Header';
 import Footer from './component/UI/Footer';
+import Routes from './component/Routes/Routes';
 
 const App = () => {
 
@@ -13,15 +14,16 @@ const App = () => {
     const state = useSelector(state => state)
     useEffect(() => {
         dispatch(getRecipes());
-    }, []);
+    }, [dispatch]);
     
-    console.log(state.user)
+
     return (
         <div className="app">
             <Header />
             <div className="inner-app">
+                <Routes />
             {/* <LoginForm /> */}
-            <RecipesList />
+            {/* <RecipesList /> */}
             </div>
             <Footer />
         </div>

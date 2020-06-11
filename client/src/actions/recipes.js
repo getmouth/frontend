@@ -12,10 +12,10 @@ export const getRecipes = () => {
     }
 }
 
-export const rateRecipe = ({id, rating }) => {
+export const rateRecipe = ({id, rating, token }) => {
     return async dispatch => {
         try {
-            const recipe = await rateRecipeById({ id, rating });
+            const recipe = await rateRecipeById({ id, rating, token });
             dispatch({
                 type: actions.RATE_RECIPE,
                 payload: recipe
