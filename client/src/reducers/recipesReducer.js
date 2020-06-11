@@ -10,6 +10,16 @@ const recipeReducer = (state = [], action) => {
                 recipes: action.payload
             }
 
+        case actions.RATE_RECIPE: 
+            return {
+                ...state,
+                recipes: state.recipes.map(
+                    recipe => recipe.id === action.payload.id
+                        ? action.payload
+                        : recipe
+                )
+            }
+
             default:
                 return state;
     }

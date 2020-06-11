@@ -1,7 +1,8 @@
 import { baseUrl } from '../utils';
+const recipeUrl = `${baseUrl}/api/recipes`;
 
 export const getAllRecipes = async () => {
-    const response = await fetch(`${baseUrl}/api/recipes`);
+    const response = await fetch(recipeUrl);
 
     let data;
     if(response.ok) {
@@ -13,3 +14,23 @@ export const getAllRecipes = async () => {
     
     return data;
 };
+
+export const rateRecipeById = async ({ id, rating }) => {
+    const response = await fetch(recipeUrl, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id, rating })
+    });
+
+    let data;
+    if(response.ok) {
+        data = await response.json();
+    } else {
+        const body = await response.json();
+        throw new Error(body);
+    }
+
+    return data
+}

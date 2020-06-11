@@ -1,33 +1,24 @@
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { v4: uuidv4 } = require('uuid')
+const helper = require('../utils/helper');
+const User = require('../models/User');
 
-const users = [];
 
-const createUser = ({ email, password }) => {
-    const hashPassword = bcrypt.hash(password, 10);
+const createUser = async ({ email, password }) => {
+    await User.deleteMany({});
+    
+    const hashPassword = await helper.hashPassword(password);
 
-    const newUser = {
-        id: uuidv4(),
+    const newUser = new User({
         email,
         password: hashPassword
-    }
+    });
 
-    users.push(newUser)
-    return newUser
+    await newUser.save();
+
+    return newUser;
 };
 
-const loginUser = async (user) => {
-    const userForToken = {
-        username: user.username,
-        id: user._id
-      }
-    const token = await jwt.sign(userForToken, 'A_SECRET');
-    return { email: user.email, token }
-}
 
 module.exports = {
-    users,
     createUser,
-    loginUser
 }

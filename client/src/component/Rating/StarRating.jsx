@@ -2,25 +2,25 @@ import React, { useState } from 'react';
 import Star from '../Icons/star';
 import './StarRating.scss';
 
-const StarRating = ({ rated, count }) => {
+const StarRating = ({ rated, count, onRate }) => {
+
     const [rating, setRating] = useState(null);
-    const [hoverValue, setHoverValue] = useState(null);
-    console.log(hoverValue)
+  
     return (
         <div className="star-rating">
             {
-                [...Array(5).keys()].map(key => {
+                [...Array(count).keys()].map(key => {
                     const currentKey = key + 1;
                     return (
                         <span
                             className="star-span" 
-                            onClick={() => setRating(currentKey)}
+                            onClick={() => onRate(rating)}
                             key={key}
-                            onMouseEnter={() => setHoverValue(currentKey)}
-                            onMouseLeave={() => setHoverValue(null)}
+                            onMouseEnter={() => setRating(currentKey)}
+                            onMouseLeave={() => setRating(null)}
                         >
                             <Star
-                                starClass={currentKey <= (hoverValue || rated) ? "gold": "grey"}
+                                starClass={currentKey <= (rating || rated) ? "gold": "grey"}
                             />
                         </span>
                     )

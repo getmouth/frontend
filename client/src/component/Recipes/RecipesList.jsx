@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Recipe from './Recipe';
-import { getRecipes } from '../../actions/recipes';
+import { getRecipes, rateRecipe } from '../../actions/recipes';
 import './RecipesList.scss';
 
 const RecipesList = () => {
@@ -22,6 +22,11 @@ const RecipesList = () => {
         }
     }
 
+    const onRated = ({ id, rating }) => {
+
+        dispatch(rateRecipe({ id, rating }));
+    }
+
     const recipesList = apiRecipes.recipes && apiRecipes.recipes;
 
     return (
@@ -35,6 +40,7 @@ const RecipesList = () => {
                                 key={recipe.id}
                                 onFavourite={onFavourited}
                                 favourited={favourites.includes(recipe.id)}
+                                onRate={onRated}
                             />
                         ))
                     )

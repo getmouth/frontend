@@ -1,11 +1,13 @@
 const supertest = require('supertest');
 const app = require('../server');
+const User = require('../models/User');
 
 const api = supertest(app);
 
 describe('login', () => {
     let user;
-    beforeEach(() => {
+    beforeEach(async () => {
+        await User.deleteMany({});
         user = { email: "email@example.com", password: "something" };
     })
   
