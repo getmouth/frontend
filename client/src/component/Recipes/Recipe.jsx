@@ -4,30 +4,34 @@ import Heart from '../Icons/heart';
 import Favourite from '../Icons/favourite';
 import StartRating from '../Rating/StarRating';
 
-const Recipe = ({ recipe, favourited, onFavourite, onRate }) => {
+const tempUrl = 'https://img.hellofresh.com/ar_2:3,c_fill,f_auto,fl_lossy,q_auto,w_230/hellofresh_s3/image/'
 
-    const tempImage = 'https://img.hellofresh.com/ar_2:3,c_fill,f_auto,fl_lossy,q_auto,w_230/hellofresh_s3/image/5ecd4d622df2ac54db00c6d8-1d19611e.jpg'
+const Recipe = ({ recipe, favourited, onFavourite, onRate }) => {
 
     const setRating = (rating) => {
         const id = recipe.id;
         onRate({ id, rating })
     } 
-
+ 
     return (
     <div
         className="recipe"
-        style={{backgroundImage: `url(${tempImage})`}}
+        style={{backgroundImage: `url(${tempUrl}${recipe.id}.jpg)`}}
     > 
            
             {
                 favourited
                 ? (
-                    <div onClick={() => onFavourite(recipe.id)}>  
-                        <Favourite />
+                    <div className="favorite">
+                        <span onClick={() => onFavourite(recipe.id)}>
+                            <Favourite />
+                        </span>
                     </div>
                 ) : (
-                    <div onClick={() => onFavourite(recipe.id)}> 
-                        <Heart />
+                    <div className="favorite"> 
+                        <span onClick={() => onFavourite(recipe.id)}>
+                            <Heart />
+                        </span>
                     </div>
                 )
                 
@@ -40,12 +44,15 @@ const Recipe = ({ recipe, favourited, onFavourite, onRate }) => {
                     <div>{recipe.headline}</div>
                 </div>
                 <div className="recipe-more-info">
-                    <StartRating
-                        rated={recipe.rating}
-                        onRate={setRating}
-                        count={5}
-                    />
-                    <div>{recipe.rating}</div>
+                    
+                    <div className="recipe-rating">
+                        <StartRating
+                            rated={recipe.rating}
+                            onRate={setRating}
+                            count={5}
+                        />
+                        {recipe.rating}
+                    </div>
                     <div>{recipe.calories}</div>
                     <div>{recipe.time}</div>
                 </div>

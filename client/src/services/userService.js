@@ -21,3 +21,24 @@ export const loginUser = async ({ email, password }) => {
     
     return data;
 }
+
+
+export const favoriteRecipeById = async ({ id, userId }) => {
+    const response = await fetch(`${baseUrl}/api/users/${userId}/favourites/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let data;
+
+    if(response.ok) {
+        data = await response.json();
+    } else {
+        const body = await response.json();
+        throw new Error(body.error)
+    }
+
+    return data;
+}

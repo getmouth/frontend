@@ -4,6 +4,8 @@ import LoginForm from './component/Forms/LoginForm/LoginForm';
 import RecipesList from './component/Recipes/RecipesList';
 import './App.scss';
 import { getRecipes } from './actions/recipes';
+import Header from './component/UI/Header';
+import Footer from './component/UI/Footer';
 
 const App = () => {
 
@@ -15,9 +17,13 @@ const App = () => {
     
     console.log(state.user)
     return (
-        <div>
+        <div className="app">
+            <Header />
+            <div className="inner-app">
             {/* <LoginForm /> */}
             <RecipesList />
+            </div>
+            <Footer />
         </div>
     );
 }

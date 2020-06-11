@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import './Login.scss';
-import { login } from '../../../actions/login';
+import { login } from '../../../actions/user';
 import Notification from '../../Notification/Notification';
 import { validateEmail, validatePassword } from '../../../utils';
 

@@ -29,8 +29,8 @@ export const rateRecipeById = async ({ id, rating }) => {
         data = await response.json();
     } else {
         const body = await response.json();
-        throw new Error(body);
+        throw new Error(body.error);
     }
 
-    return data
+    return data;
 }

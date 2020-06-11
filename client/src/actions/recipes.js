@@ -25,3 +25,5 @@ export const rateRecipe = ({id, rating }) => {
         }
     }
 }
+
+
