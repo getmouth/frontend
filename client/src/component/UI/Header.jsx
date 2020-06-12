@@ -10,7 +10,10 @@ const Header = () => {
 
     return (
         <div className="header">
-            <div>
+            <a className="logo-link">
+                <h2 className="logo">Start Fresh</h2>
+            </a>
+            <div className="authenticate">
                 {
                     user
                     ? <a href="/" onClick={onLogout}>Logout</a>

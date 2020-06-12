@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="footer">
             <div className="inner-footer">
                 <div className="footer-info">
-                    Footer
+                    &copy; 2020
                 </div>
             </div>
             
