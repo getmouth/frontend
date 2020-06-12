@@ -1,22 +1,26 @@
+@import '../../main.scss';
+
 .footer {
 
     margin-bottom: 0;
-    margin-top: 40px;
     height: 70px;
     width: 100%;
-    box-shadow: 0 3px 2px -2px #e0e0e0;
-    border-top: 1px solid #ddd;
-    background-color: #f8f8f8;
+    box-shadow: 0 3px 2px -2px $light-gray;
+    border-top: 1px solid $lighter-gray;
+    background-color: $primary-background-color;
     padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
     .inner-footer {
-        max-width: 1200px;
+        max-width: $max-width;
         margin: auto;
 
         .footer-info {
-            width: 90%;
+            width: 80%;
             margin: auto;
         }
     }
-
 }

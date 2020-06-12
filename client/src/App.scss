@@ -1,20 +1,32 @@
+@import './main.scss';
 
-body {
-    background-color: #f8f8f8;
-    height: 100%;
-    color: #333;
-    margin: 0;
-    font-family: 'Roboto Condensed', sans-serif;
-   
+html {
+    position:relative;
+    min-height: $full-width;
+
+    body {
+        background-color: $primary-background-color;
+        color: $gray;
+        margin: 0;
+        font-family: 'Roboto Condensed', sans-serif;
+        height: $full-height;
+        min-height: $full-height;
+        margin:0;
+        padding:0;
+    }
 }
 
 * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased !important;
 }
 .app {
-    
+   
+    padding-bottom: 60px;
     .inner-app {
-        max-width: 1200px;
+        max-width: $max-width;
         margin: auto;
+        height: $full-height;
+
     }
 }

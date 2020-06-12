@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const config = require('../utils/config');
 
-const generateJWTToken = async (user) => { console.log(user)
+const generateJWTToken = async (user) => {
     return jwt.sign(user, config.SECRET, {
       subject: user.email,
       expiresIn: '7d',

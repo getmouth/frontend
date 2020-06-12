@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const recipeRoute = require('./routes/recipesRoute');
 const loginRoute = require('./routes/loginRoute');
 const userRoute = require('./routes/usersRoute');
@@ -10,7 +11,9 @@ const Recipe = require('./models/Recipe');
 const data = require('./recipes.json');
 const cors = require('cors');
 require('dotenv').config();
-const User = require('./models/User')
+
+
+
 
 mongoose.connect(config.DB_URL, {
     useFindAndModify: false,
@@ -19,19 +22,21 @@ mongoose.connect(config.DB_URL, {
     useCreateIndex: true
 })
 .then(async () => {
-    //User.deleteMany({})
+   //Added a DB to persist the user actios (rating/facorites)
+  //This loads the recipes into the DB, not a good practice but a 
+  // prrof of concept
     logger.info('MongoDB connected successfully');
     const recipes = await Recipe.find({});
     if (recipes.length === 0) {
         allRecipes = await Recipe.insertMany(data);
         await allRecipes.save();
     }
-   // logger.info(recipes)
 })
 .catch(error => logger.error(error.message));
 
 
 const app = express();
+app.use(compression())
 app.use(express.json());
 app.use(cors());
 app.use(middleware.requestLogger)

@@ -1,17 +1,20 @@
+@import '../../main.scss';
+
 .recipe {
     width: 21.5%;
-    border: 1px solid #ddd;
+    border: 1px solid $lighter-gray;
    
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: 15px;
-    height: 380px;
+    height: 360px;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 6px;
+    border-radius: 4px;
     position: relative;
     margin-top: 90px;
+    box-shadow: 10px 2px 19px 0px $light-black;
 
 
     .favorite {
@@ -22,9 +25,9 @@
     .recipe-info {
         display: flex;
         flex-direction: column;
-        color: #fff;
+        color: $white;
         border: none;
-        width: 100%;
+        width: $full-width;
         border-radius: 0 4px;
         flex-grow: 1;
         padding: 0 10px 10px;
@@ -44,10 +47,11 @@
         .recipe-more-info {
 
             margin-top: 10px;
-            font-size: 14px;
+            font-size: $small-fonts;
+            line-height: 1.6;
 
             .recipe-rating {
-                width: 100%;
+                width: $full-width;
                 .star-rating {
                     display: inline-block;
                     margin-right: 10px;
@@ -59,12 +63,12 @@
     }
 
     @media (max-width: 1130px) {
-        width: 20%;
+        width: 21%;
         margin: 10px;
         height: 320px;
     }
 
-    @media(max-width: 900px) {
+    @media(max-width: 970px) {
         width: 28%;
         height: 300px;
     }
@@ -72,16 +76,20 @@
     @media (max-width: 860px) {
         width: 27%;
         margin: 12px;
-        align-self: end;
     }
 
     @media (max-width: 782px) {
         width: 36.333%;
     }
 
-    @media(max-width: 500px) {
+    @media (max-width: 680px ) {
+        width: 40%;
+        margin: 8px;
+    }
+
+    @media(max-width: 570px) {
         width: 60%;
-        height: 400px;
+        height: 360px;
         margin: auto;
         margin-top: 30px;
     }
