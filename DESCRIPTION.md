@@ -1,5 +1,5 @@
 # Description
-_A live service of the project is available [here](https://boiling-oasis-50981.herokuapp.com/)_
+_A live service of the project is available herer[https://boiling-oasis-50981.herokuapp.com/](https://boiling-oasis-50981.herokuapp.com/)_
 
 The following  project is a Recipes display app, which makes requests
 to a RESTful API based on user interactions. The project includes an intial login page where users can login and start interating with the recipes. It offers users the ability to favorite and unfavorite a recipe as well give recipes rating. The RESTful API is
