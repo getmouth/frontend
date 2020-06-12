@@ -18,7 +18,13 @@ router.post('/', async (req, res) => {
     if (!password) {
         return res.status(400).json({ error: 'Invalid or missing password' });
     }
-    await userServices.createUser({ email, password });
+
+    try {
+        await userServices.createUser({ email, password });
+    } catch (error) {
+        res.status(404).json({ error: error.message });
+    }
+    
 
     try {
             passport.authenticate('local', { session: false }, async (error, user) => {

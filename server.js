@@ -40,11 +40,10 @@ app.use(compression())
 app.use(express.json());
 app.use(cors());
 app.use(middleware.requestLogger)
-app.use(middleware.errorHandler)
 app.use('/api/recipes', recipeRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/users', userRoute);
-app.use(middleware.unknownEndpoint());
+app.use(middleware.unknownEndpoint)
 
 const PORT = process.env.PORT || 3001;
 
