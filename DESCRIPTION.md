@@ -23,6 +23,8 @@ To get started, make a copy or clone this project.
 - Run `NPM run dev` to start the client server
 - Open another terminal and execute `NPM run server` to start the express server.
 
+- Nagivate to `http://localhost:3000`  or `http:localhost:3001`(served by express not isomophic).
+
 There are a few test files included on the express side of things
 - To run the tests run `NPM test --t Testname`
 
