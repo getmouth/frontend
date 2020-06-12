@@ -16,7 +16,6 @@ const App = () => {
         dispatch(getRecipes());
     }, [dispatch]);
     
-
     return (
         <div className="app">
             <Header />
